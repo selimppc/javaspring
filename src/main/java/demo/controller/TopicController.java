@@ -3,6 +3,8 @@ package demo.controller;
 import demo.entity.Topic;
 import demo.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +29,9 @@ public class TopicController {
     }
 
     @PostMapping("/topics")
-    public void addTopic(@RequestBody Topic topic){
+    public ResponseEntity<?> addTopic(@RequestBody Topic topic){
         topicService.addTopic(topic);
+        return new ResponseEntity<>(topic, HttpStatus.CREATED);
     }
 
     @PutMapping("/topics/{id}")
