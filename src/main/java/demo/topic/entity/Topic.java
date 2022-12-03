@@ -1,8 +1,10 @@
-package demo.entity;
+package demo.topic.entity;
 
+
+import jakarta.persistence.Id;
 
 public class Topic {
-    // @Id
+    @Id
     private String id;
 
     private String name;

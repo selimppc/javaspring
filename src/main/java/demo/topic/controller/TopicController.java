@@ -1,7 +1,7 @@
-package demo.controller;
+package demo.topic.controller;
 
-import demo.entity.Topic;
-import demo.services.TopicService;
+import demo.topic.entity.Topic;
+import demo.topic.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

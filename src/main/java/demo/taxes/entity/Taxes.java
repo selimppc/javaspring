@@ -1,12 +1,13 @@
-package tax.entity;
+package demo.taxes.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name ="tax")
-public class Tax {
+@Table(name = "taxes")
+public class Taxes implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,10 +18,10 @@ public class Tax {
     private int nid;
     private Date date;
 
-    public Tax(){
+    public Taxes(){
 
     }
-    public Tax(int id, int tin, String surname, String first_name, int nid, Date date) {
+    public Taxes(int id, int tin, String surname, String first_name, int nid, Date date) {
         this.id = id;
         this.tin = tin;
         this.surname = surname;

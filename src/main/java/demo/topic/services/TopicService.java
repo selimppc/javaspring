@@ -1,5 +1,5 @@
-package demo.services;
-import demo.entity.Topic;
+package demo.topic.services;
+import demo.topic.entity.Topic;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;

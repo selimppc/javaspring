@@ -1,34 +1,33 @@
-package tax;
+package demo.taxes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tax.entity.Tax;
-import tax.services.TaxService;
+import demo.taxes.entity.Taxes;
+import demo.taxes.services.TaxesService;
 
 import java.util.List;
 
 @SpringBootApplication
 @RestController
 @RequestMapping("/api/v1")
-public class TaxController {
+public class TaxesController {
 
     @Autowired
-    private TaxService taxService;
+    private TaxesService taxesService;
 
     @ResponseBody
     @GetMapping("/taxes")
-    public List<Tax> getTaxes(){
-        return taxService.getAllTaxes();
+    public List<Taxes> getTaxes(){
+        return taxesService.getAllTaxes();
     }
 
     @ResponseBody
     @PostMapping("/taxes")
-    public ResponseEntity<?> addTax(@RequestBody Tax tax){
-        // taxService.addTax(tax);
+    public ResponseEntity<?> addTax(@RequestBody Taxes taxes){
+        Taxes tax = taxesService.addTax(taxes);
         return new ResponseEntity<>(tax, HttpStatus.CREATED);
     }
 
