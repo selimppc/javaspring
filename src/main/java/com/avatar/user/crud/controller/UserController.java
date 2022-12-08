@@ -1,14 +1,15 @@
 package com.avatar.user.crud.controller;
 
 import com.avatar.user.crud.entity.User;
-import com.avatar.user.crud.repository.UserRepository;
 import com.avatar.user.crud.service.UserService;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -27,8 +28,14 @@ public class UserController {
     // R: get single user by ID
     @ResponseBody
     @GetMapping("/users/{id}")
-    public User getUser(@PathVariable String id){
-        return userService.getUser(id);
+    @Nullable
+    public ResponseEntity<?> getUser(@PathVariable String id) {
+        try {
+            return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+        }catch (NoSuchElementException exception){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
     }
 
     // add a user
@@ -50,8 +57,6 @@ public class UserController {
     public void deleteUser(@PathVariable String id){
         userService.deleteUser(id);
     }
-
-
 
 
 }
