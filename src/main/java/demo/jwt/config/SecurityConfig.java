@@ -109,9 +109,11 @@ public class SecurityConfig {
     @Bean
     public UserDetailsManager authenticateUsers() {
 
-        UserDetails user = User.withUsername("foo")
+        UserDetails user = User
+                .withUsername("foo")
                 .password(PasswordEncoderFactories.createDelegatingPasswordEncoder()
                         .encode("foo"))
+                .authorities("USER")
                 .build();
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
         users.setAuthoritiesByUsernameQuery("select id,username,password from users where username=?");
