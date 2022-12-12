@@ -12,7 +12,7 @@ import java.util.List;
 public class TaxesService {
 
     @Autowired
-    private TaxesRepository taxesRepository;
+    TaxesRepository taxesRepository;
 
     public List<Taxes> getAllTaxes(){
         return (List<Taxes>) taxesRepository.findAll();
