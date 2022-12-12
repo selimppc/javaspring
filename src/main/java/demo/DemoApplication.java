@@ -1,12 +1,12 @@
 package demo;
 
-import demo.jwt.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 
+@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @SpringBootApplication
-// @EnableJpaRepositories(basePackageClasses = UserRepository.class)
 public class DemoApplication {
 
 	public static void main(String[] args) {
