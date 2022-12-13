@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+import java.io.Serializable;
+
 
 
 @Getter
@@ -12,10 +15,14 @@ import lombok.Setter;
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "uuid", unique = true, updatable = false, nullable = false)
+    private String id;
+
     private String username;
     private String password;
 
@@ -25,7 +32,8 @@ public class User {
     @Nullable
     private boolean enabled;
 
-    public User(String username, String password, String roles, boolean enabled) {
+    public User(String id, String username, String password, String roles, boolean enabled) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.roles = roles;

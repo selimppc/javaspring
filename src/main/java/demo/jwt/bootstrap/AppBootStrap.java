@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class AppBootStrap implements CommandLineRunner {
@@ -24,13 +25,13 @@ public class AppBootStrap implements CommandLineRunner {
 
         Optional<User> user1 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
         if (user1.isEmpty()){
-            User userX = new User("user", "password", "ROLE_USER", true);
+            User userX = new User(UUID.randomUUID().toString(), "user", "password", "ROLE_USER", true);
             userRepository.save(userX);
         }
 
         Optional<User> user2 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
         if (user1.isEmpty()){
-            User userY = new User("admin", "admin", "ROLE_ADMIN", true);
+            User userY = new User(UUID.randomUUID().toString(), "admin", "admin", "ROLE_ADMIN", true);
             userRepository.save(userY);
         }
 
