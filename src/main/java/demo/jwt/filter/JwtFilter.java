@@ -22,7 +22,9 @@ public class JwtFilter extends GenericFilterBean {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
+
         final String authHeader = request.getHeader("authorization");
+
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
             filterChain.doFilter(request, response);
@@ -32,11 +34,14 @@ public class JwtFilter extends GenericFilterBean {
                 //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please provide a valid token.");
             }
         }
+
         final String token = authHeader.substring(7);
+
         Claims claims = Jwts.parser().setSigningKey("secret").parseClaimsJws(token).getBody();
         request.setAttribute("claims", claims);
         //request.setAttribute("blog", servletRequest.getParameter("id"));
-        System.out.println(request);
+        System.out.println(claims);
+
         filterChain.doFilter(request, response);
     }
 

@@ -27,9 +27,11 @@ public class JwtGeneratorImpl implements JwtGeneratorInterface {
                 .setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secret")
                 .compact();
+
         Map<String, String> jwtTokenGen = new HashMap<>();
         jwtTokenGen.put("token", jwtToken);
         jwtTokenGen.put("message", message);
+        jwtTokenGen.put("type", "bearer");
         return jwtTokenGen;
     }
 

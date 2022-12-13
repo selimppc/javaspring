@@ -13,8 +13,8 @@ public class FilterConfig {
         FilterRegistrationBean filter= new FilterRegistrationBean();
         filter.setFilter(new JwtFilter());
 
-//        provide endpoints which needs to be restricted.
-//        All Endpoints would be restricted if unspecified
+        //provide endpoints which needs to be restricted.
+        //All Endpoints would be restricted if unspecified
         filter.addUrlPatterns("/api/v1/blog/restricted");
         return filter;
     }
