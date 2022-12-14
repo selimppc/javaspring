@@ -63,8 +63,15 @@
 			<version>2.3.0</version>
 		</dependency>
 
-
 		<!-- End Security -->
+
+
+		<!-- End Redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- End Redis -->
 
 
 		<!-- Start Test -->
