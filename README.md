@@ -102,3 +102,22 @@
 
     # create private key in PKCS#8 format
     $ openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in keypair.pem -out private.pem
+
+
+### TASK SCHEDULER
+
+    Dependency: awaitility
+    We will use awaitility for scheduled.
+
+    Step 1: Add annotation @EnableScheduling in main class
+    Step 2: Use @Scheduled(fixedRate = 9000L) for 9 secs other are available like cron | fixedDelay
+
+
+### ASYNC for concurrent 
+
+    No Dependency is needed. 
+
+    Step 1: Add annotation @EnableAsync in main class 
+    Step 2: Make a config file like: AsyncConfiguration.java
+    Step 3: Make a service and use annotaiton @Async for the method - with CompletableFuture
+    Step 4: Use commandline tools or controller  - with CompletableFuture
