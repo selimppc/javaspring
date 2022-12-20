@@ -16,9 +16,10 @@ import java.io.Serializable;
 public class Redis implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", columnDefinition = "uniqueidentifier default newid()", unique = true, updatable = false, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    // FOR MSSQL @Column(name = "id", columnDefinition = "uniqueidentifier default newid()", unique = true, updatable = false, nullable = false)
+    @Column(name = "id", unique = true, updatable = false, nullable = false)
+    private int id;
 
     private String title;
     private String description;

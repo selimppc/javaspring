@@ -18,9 +18,10 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", columnDefinition = "uniqueidentifier default newid()", unique = true, updatable = false, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    // for MSSQL @Column(name = "id", columnDefinition = "uniqueidentifier default newid()", unique = true, updatable = false, nullable = false)
+    @Column(name = "id", unique = true, updatable = false, nullable = false)
+    private int id;
 
     private String username;
     private String password;
@@ -31,7 +32,7 @@ public class User implements Serializable {
     @Nullable
     private boolean enabled;
 
-    public User(String id, String username, String password, String roles, boolean enabled) {
+    public User(int id, String username, String password, String roles, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
