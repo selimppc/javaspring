@@ -23,17 +23,17 @@ public class AppBootStrap implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Optional<User> user1 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
-        if (user1.isEmpty()){
-            User userX = new User(1, "user", "password", true , null);
-            userRepository.save(userX);
-        }
-
-        Optional<User> user2 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
-        if (user1.isEmpty()){
-            User userY = new User(2, "admin", "admin", true, null);
-            userRepository.save(userY);
-        }
+//        Optional<User> user1 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
+//        if (user1.isEmpty()){
+//            User userX = new User(1, "user", "password", true , null);
+//            userRepository.save(userX);
+//        }
+//
+//        Optional<User> user2 = Optional.ofNullable(userRepository.findByUsernameAndPassword("user", "password"));
+//        if (user1.isEmpty()){
+//            User userY = new User(2, "admin", "admin", true, null);
+//            userRepository.save(userY);
+//        }
 
 
     }

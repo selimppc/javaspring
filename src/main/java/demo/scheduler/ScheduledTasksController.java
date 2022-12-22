@@ -17,16 +17,16 @@ public class ScheduledTasksController {
     @Scheduled(fixedRate = 9000L)
     @GetMapping("/tasks")
     public String scheduleATask(){
-        String random = new Random().toString();
-        System.out.println("Task executed " + random);
+        // String random = new Random().toString();
+        // System.out.println("Task executed " + random);
         return "Schedule a task";
     }
 
     @Scheduled(fixedDelay = 9000L)
     @GetMapping("/delays")
     public String delayATask(){
-        Date date = new Date();
-        System.out.println("Task delayed " + date.toString());
+        // Date date = new Date();
+        // System.out.println("Task delayed " + date.toString());
         return "Delayed a task";
     }
 
