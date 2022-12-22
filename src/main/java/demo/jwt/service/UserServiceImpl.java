@@ -7,6 +7,8 @@ import demo.jwt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -31,6 +33,11 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("Invalid id and password");
         }
         return user;
+    }
+
+    @Override
+    public List<User> allUsers(){
+        return userRepository.findAll();
     }
 
 
