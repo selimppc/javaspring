@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import java.io.Serializable;
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -27,17 +27,22 @@ public class User implements Serializable {
     private String password;
 
     @Nullable
-    private String roles;
-
-    @Nullable
     private boolean enabled;
 
-    public User(int id, String username, String password, String roles, boolean enabled) {
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+            )
+    private Set<Role> roles = new HashSet<>();
+
+
+    public User(int id, String username, String password, boolean enabled, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.roles = roles;
         this.enabled = enabled;
+        this.roles = roles;
     }
-
 }

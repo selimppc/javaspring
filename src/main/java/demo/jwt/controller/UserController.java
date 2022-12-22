@@ -50,4 +50,10 @@ public class UserController {
         }
     }
 
+
+    @PostMapping("/user-role")
+    public void userRole(@RequestBody User user){
+        userService.saveUser(user);
+    }
+
 }
