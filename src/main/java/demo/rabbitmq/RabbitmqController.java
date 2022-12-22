@@ -18,6 +18,7 @@ public class RabbitmqController {
     @Autowired
     Receiver receiver;
 
+
     @GetMapping("/queues")
     public void queues() throws Exception {
         String hello = "HELLO";
@@ -29,5 +30,8 @@ public class RabbitmqController {
     public ResponseEntity<?> retrieve(){
         return new ResponseEntity<>(receiver.getLatch(), HttpStatus.OK);
     }
+
+
+
 
 }

@@ -13,17 +13,18 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class QueueConfig {
-    static final String topicExchangeName = "spring-boot-exchange";
-    static final String queueName = "spring-boot";
+    static final String TOPIC_EXCHANGE_NAME = "spring-boot-exchange";
+    static final String QUEUE_NAME = "spring-boot";
+
 
     @Bean
     Queue queue() {
-        return new Queue(queueName, false);
+        return new Queue(QUEUE_NAME, false);
     }
 
     @Bean
     TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
+        return new TopicExchange(TOPIC_EXCHANGE_NAME);
     }
 
     @Bean
@@ -38,7 +39,7 @@ public class QueueConfig {
     ) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(queueName);
+        container.setQueueNames(QUEUE_NAME);
         container.setMessageListener(listenerAdapter);
         return container;
     }
@@ -47,4 +48,6 @@ public class QueueConfig {
     MessageListenerAdapter listenerAdapter(Receiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
+
+
 }
