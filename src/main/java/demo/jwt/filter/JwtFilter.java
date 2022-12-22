@@ -12,7 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.filter.GenericFilterBean;
 
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class JwtFilter extends GenericFilterBean {
@@ -30,8 +34,12 @@ public class JwtFilter extends GenericFilterBean {
             filterChain.doFilter(request, response);
         } else {
             if(authHeader == null || !authHeader.startsWith("Bearer ")){
+                Map<String, String> res = new HashMap<>();
+                res.put("code", "INVALID_TOKEN");
+                res.put("message", "Invalid Token");
+
                 throw new ServletException("Please provide a valid token.");
-                //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please provide a valid token.");
+                //response.sendError(HttpServletResponse.SC_BAD_REQUEST, res.toString());
             }
         }
 

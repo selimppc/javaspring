@@ -16,6 +16,7 @@ public class FilterConfig {
         //provide endpoints which needs to be restricted.
         //All Endpoints would be restricted if unspecified
         filter.addUrlPatterns("/api/v1/blog/restricted");
+        //filter.addUrlPatterns("/api/v1/*");
         return filter;
     }
 }
