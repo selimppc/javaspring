@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserService {
 
 
-    public void saveUser(User user);
+    public String saveUser(User user);
 
     public User getUserByUsernameAndPassword(String username, String password) throws UserNotFoundException, UserNotFoundException;
 

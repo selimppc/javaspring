@@ -31,9 +31,9 @@ public class DataFixtureCommand implements CommandLineRunner {
         String description = title;
 
         //save
-        for (int i= 0; i < 21; i++) {
-            redisRepository.save(new Redis(title, description));
-        }
+//        for (int i= 0; i < 21; i++) {
+//            redisRepository.save(new Redis(title, description));
+//        }
 
         // LOG.info("Data Saved. total : " + redisRepository.count());
     }

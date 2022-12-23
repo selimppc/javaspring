@@ -45,4 +45,6 @@ public class User implements Serializable {
         this.enabled = enabled;
         this.roles = roles;
     }
+
+
 }

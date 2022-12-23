@@ -54,8 +54,8 @@ public class UserController {
 
 
     @PostMapping("/user-role")
-    public void userRole(@RequestBody User user){
-        userService.saveUser(user);
+    public String userRole(@RequestBody User user){
+        return userService.saveUser(user);
     }
 
 
