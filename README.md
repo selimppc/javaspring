@@ -121,3 +121,15 @@
     Step 2: Make a config file like: AsyncConfiguration.java
     Step 3: Make a service and use annotaiton @Async for the method - with CompletableFuture
     Step 4: Use commandline tools or controller  - with CompletableFuture
+
+
+### IMAGE UPLOAD and store into db tables by bytes
+
+    API: POST / upload
+    1. http://localhost:8080/api/v1/images/upload
+
+    Get Image by Name:
+    2. http://localhost:8080/api/v1/images/<name>/info
+
+    Get Image info by Name
+    3. http://localhost:8080/api/v1/images/<name>/info
